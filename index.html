@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX</title>
+  </head>
+  <style>
+    body {
+      text-align: center;
+      font: 10pt arial;
+    }
+    input {
+      padding: 10px;
+      border: none;
+      background-color: #ccc;
+      color: #000;
+      width: 160px;
+      border-radius: 6px;
+      outline: none;
+      cursor: pointer;
+    }
+    select {
+      padding: 10px;
+      border: 1px solid #aaa;
+      color: #000;
+      border-radius: 6px;
+      outline: none;
+      width: 200px;
+      margin: 20px;
+    }
+  </style>
+  <body>
+    <input type="button" value="AJAX" onclick="getData()" />
+    <select id="cours"></select>
+  </body>
+  <script>
+    let xhr = new XMLHttpRequest();
+    function getData() {
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          let data = xhr.responseXML;
+          for (
+            let i = 0;
+            i < data.getElementsByTagName("chapitre").length;
+            i++
+          ) {
+            document.getElementById("cours").options[i] = new Option(
+              data.getElementsByTagName("nom").item(i).firstChild.data +
+                " : " +
+                data.getElementsByTagName("nbr_heures").item(i).firstChild
+                  .data +
+                " heures"
+            );
+          }
+        } else {
+          alert(xhr.readyState);
+        }
+      };
+      xhr.open("GET", "cours.xml", true);
+      xhr.send(null);
+    }
+  </script>
+</html>

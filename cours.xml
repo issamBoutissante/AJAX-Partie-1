@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cours>
+    <chapitre>
+        <nom>HTML</nom>
+        <nbr_heures>20</nbr_heures>
+    </chapitre>
+      <chapitre>
+        <nom>HTML5</nom>
+        <nbr_heures>12</nbr_heures>
+    </chapitre>
+    <chapitre>
+        <nom>CSS</nom>
+        <nbr_heures>20</nbr_heures>
+    </chapitre>
+</cours>
